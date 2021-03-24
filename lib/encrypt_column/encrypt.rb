@@ -8,6 +8,7 @@ class Encrypt
 
   def self.plaintext(plaintext, key = ENV['ENCRYPT_KEY'])
     return raise 'Missing Encryption Key Config' if key.nil?
+    return if plaintext.blank?
     cipher = OpenSSL::Cipher::AES256.new(:CBC)
     iv = cipher.random_iv
 
