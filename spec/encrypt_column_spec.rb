@@ -55,7 +55,7 @@ describe EncryptColumn do
       ENV['ENCRYPTION_KEY'] = nil
       class SecureTable < ActiveRecord::Base
         encrypt :ssn, failsafe: true,
-                      key: 'some_encryption_key_specified_in_encrypt_declaration'
+                      key: 'some_encryption_key_specified_in'
       end
     end
 

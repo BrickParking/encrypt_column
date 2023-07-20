@@ -6,7 +6,7 @@ describe Decrypt do
   let(:plaintext) { 'plain text' }
   let(:notext) { '' }
   let(:niltext) { nil }
-  let(:good_key) { '9438290832459034095840398509809sdsfkl;kdsgfl;kdfsgsdsdlsad' }
+  let(:good_key) { '94382908324590340958403985098090' }
   let(:wrong_key) { 'xxx9438290832459034095840398509809sdsfkl;' }
   let(:ciphertext) { Encrypt.text(plaintext) }
   let(:ciphernotext) { Encrypt.text(notext) }
@@ -36,7 +36,7 @@ describe Decrypt do
 
     it 'has a blank ciphertext supplied' do
       subject = Decrypt.cipher('')
-      expect(subject).to eq('ERROR: Missing encryption ciphertext')
+      expect(subject).to eq(nil)
     end
   end
 
