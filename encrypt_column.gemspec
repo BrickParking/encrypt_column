@@ -41,9 +41,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rubocop"
-  spec.add_development_dependency "coveralls"
 
-  spec.add_dependency "bcrypt", "~> 3.1"
+  spec.add_dependency "bcrypt"
   spec.add_dependency "activerecord"
   spec.add_dependency "activesupport"
 end
