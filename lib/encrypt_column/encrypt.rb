@@ -1,12 +1,12 @@
 require 'openssl'
 
 class Encrypt
-  def self.text(plaintext, key = ENV['ENCRYPTION_KEY'])
+  def self.text(plaintext, key = ENV.fetch('ENCRYPTION_KEY', nil))
     return raise 'Missing Encryption Key Config' if key.nil?
     ActiveSupport::MessageEncryptor.new(key).encrypt_and_sign(plaintext)
   end
 
-  def self.plaintext(plaintext, key = ENV['ENCRYPT_KEY'])
+  def self.plaintext(plaintext, key = ENV.fetch('ENCRYPT_KEY', nil))
     return raise 'Missing Encryption Key Config' if key.nil?
     return if plaintext.blank?
     cipher = OpenSSL::Cipher::AES256.new(:CBC)
@@ -18,6 +18,6 @@ class Encrypt
 
     enciphered = cipher.update(plaintext)
     enciphered << cipher.final
-    [enciphered, iv].map { |part| [part].pack('m').gsub(/\n/, '') }.join('--')
+    [enciphered, iv].map { |part| [part].pack('m').gsub("\n", '') }.join('--')
   end
 end

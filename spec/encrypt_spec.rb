@@ -10,7 +10,7 @@ describe Encrypt do
   context 'encryption key config specified' do
 
     before do
-      ENV['ENCRYPTION_KEY'] = '9438290832459034095840398509809sdsfkl;kdsgfl;kdfsgsdsdlsad'
+      ENV['ENCRYPTION_KEY'] = '94382908324590340958403985098090'
     end
 
     it 'returns a encrypted value of a text string' do
@@ -24,7 +24,7 @@ describe Encrypt do
     end
 
     it 'return a encryption key too short error' do
-      expect{subject}.to raise_error('key length too short')
+      expect{subject}.to raise_error(ArgumentError, 'key must be 32 bytes')
     end
 
   end

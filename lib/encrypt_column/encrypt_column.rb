@@ -8,8 +8,8 @@ module ClassMethods
     searchable = options[:searchable] || false
     encrypt_cond = options[:if] || proc { true }
     failsafe = options[:failsafe] || false
-    @@encrypt_column_key = options[:key] || ENV['ENCRYPT_KEY']
-    @@hash_salt = options[:hash_salt] || ENV['HASH_SALT']
+    @@encrypt_column_key = options[:key] || ENV.fetch('ENCRYPT_KEY', nil)
+    @@hash_salt = options[:hash_salt] || ENV.fetch('HASH_SALT', nil)
     column = name
     column = "#{name}_ciphertext" if failsafe
     hash_column = "#{name}_hash"

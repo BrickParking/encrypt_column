@@ -1,8 +1,9 @@
-# Run rubocop --auto-gen-config to generate a to-do file with a list of issues
-#
+inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.2
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.2
   Include:
     - Rakefile
     - config.ru
@@ -18,43 +19,3 @@ AllCops:
     - !ruby/regexp /old_and_unused\.rb$/
     - lib/templates/erb/scaffold/_form.html.erb
     - scripts/interactive/**/*
-  # By default, the rails cops are not run. Override in project or home
-  # directory .rubocop.yml files, or by giving the -R/--rails option.
-  # RunRailsCops: true
-
-# Disable documentation checking until a class needs to be documented
-Documentation:
-  Enabled: false
-
-Style/IndentationWidth:
-  Exclude:
-    - 'spec/**/*'
-
-Metrics/AbcSize:
-  Max: 25
-
-Metrics/CyclomaticComplexity:
-  Max: 12
-
-Metrics/LineLength:
-  Max: 100
-
-# Offense count: 1
-# Configuration parameters: CountComments.
-Metrics/MethodLength:
-  Max: 25
-
-# Offense count: 1
-Metrics/PerceivedComplexity:
-  Max: 12
-
-Metrics/AbcSize:
-  Max: 28
-
-Style/ClassVars:
-  Exclude:
-    - 'lib/encrypt_column/encrypt_column.rb'
-
-Style/MultilineIfModifier:
-  Exclude:
-    - 'lib/encrypt_column/encrypt_column.rb'
